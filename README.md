@@ -1,36 +1,162 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# Full Stack Web App (Next.js + Prisma + Auth + Vercel Ready)
+A modern full-stack web application built with **Next.js**, **Prisma ORM**, **Neon PostgreSQL**, and **NextAuth-style authentication**, fully deployed and optimized for production on Vercel.
+This project includes authentication, database integration, admin capabilities, and a scalable architecture suitable for SaaS applications.
+---
+## 🚀 Tech Stack
+- **Frontend:** Next.js (App Router)
+- **Backend:** Next.js API Routes
+- **Database:** PostgreSQL (Neon)
+- **ORM:** Prisma
+- **Authentication:** NextAuth (session-based)
+- **Deployment:** Vercel
+- **Runtime:** Node.js (server functions)
+---
+## ✨ Features
+### 🔐 Authentication System
+- Secure login system
+- Session-based authentication
+- Production-safe cookie handling
+- Environment-aware configuration (local + production)
+- Protected API routes
+### 🗄️ Database
+- PostgreSQL via Neon
+- Prisma ORM integration
+- Type-safe database queries
+- Migrations support
+### ⚙️ Admin System
+- Admin login access
+- Protected routes
+- Settings management API
+### 🌐 Production Ready
+- Fully deployed on Vercel
+- Environment variable configuration
+- Secure production cookies
+- Node.js runtime enforced for auth routes
+---
+## 📦 Project Structure
 
-First, run the development server:
+src/
+├── app/
+│    ├── api/
+│    │    └── auth/
+│    │         └── […nextauth]/
+│    ├── admin/
+│    └── (frontend pages)
+│
+├── lib/
+│    └── auth.ts
+│    └── prisma.ts
+│
+├── prisma/
+│    └── schema.prisma
 
-```bash
+---
+## 🔐 Environment Variables
+Create a `.env.local` file for local development:
+```env
+DATABASE_URL=your_neon_database_url
+NEXTAUTH_URL=http://localhost:3000
+NEXTAUTH_SECRET=your_secret_key
+
+⸻
+
+Production (Vercel)
+
+Set these in Vercel Dashboard:
+
+* DATABASE_URL
+* NEXTAUTH_URL
+* NEXTAUTH_SECRET
+
+⸻
+
+🧪 Running Locally
+
+1. Install dependencies
+
+npm install
+
+2. Run database migrations
+
+npx prisma generate
+npx prisma db push
+
+3. Start development server
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App runs on:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3000
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+⸻
 
-## Learn More
+🏗️ Build for Production
 
-To learn more about Next.js, take a look at the following resources:
+npm run build
+npm start
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+⸻
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+🚀 Deployment (Vercel)
 
-## Deploy on Vercel
+1. Push repository to GitHub
+2. Import project into Vercel
+3. Add environment variables:
+    * DATABASE_URL
+    * NEXTAUTH_URL
+    * NEXTAUTH_SECRET
+4. Deploy
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+⸻
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+🔐 Authentication Notes
+
+* Uses environment-aware cookie handling
+* Secure cookies enabled in production only
+* Node.js runtime enforced for auth routes
+* Session persistence via NextAuth strategy
+
+⸻
+
+⚠️ Known Constraints
+
+* Requires correct environment variables to function
+* Database must be reachable from production (Neon recommended)
+* Auth will fail silently if NEXTAUTH_URL is incorrect
+
+⸻
+
+🧠 Lessons Learned (Important)
+
+This project includes production fixes for:
+
+* Vercel environment variable mismatch
+* NextAuth cookie security issues
+* Edge runtime incompatibility with Prisma
+* Local vs production authentication divergence
+
+⸻
+
+📈 Future Improvements
+
+* Role-based access control (RBAC)
+* Rate limiting on auth routes
+* Email verification system
+* Audit logging
+* API security hardening
+* Analytics integration (PostHog / Vercel Analytics)
+
+⸻
+
+👤 Author
+
+Built as a full-stack SaaS foundation with production deployment readiness.
+
+⸻
+
+📄 License
+
+MIT
+
