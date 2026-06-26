@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  name      String?
+  role      Role      @default(USER)
+  password  String?
+  resetToken String?
+  resetTokenExpiry DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  bookings  Booking[]
+}
+
+model Service {
+  id          String    @id @default(cuid())
+  name        String
+  description String?
+  duration    Int
+  price       Int
+  active      Boolean   @default(true)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  bookings    Booking[]
+}
+
+model Booking {
+  id        String        @id @default(cuid())
+  userId    String
+  serviceId String
+  date      DateTime
+  startTime String
+  endTime   String
+  status    BookingStatus @default(PENDING)
+  notes     String?
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  service   Service       @relation(fields: [serviceId], references: [id])
+  user      User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([serviceId])
+  @@index([date])
+  @@index([status])
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+model BusinessSetting {
+  key   String @id
+  value String
+}
+
+model ActivityLog {
+  id          String   @id @default(cuid())
+  action      String
+  description String?
+  performedBy String?
+  createdAt   DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+model BusinessHour {
+  id        String   @id @default(cuid())
+  day       String
+  openTime  String?
+  closeTime String?
+  closed    Boolean  @default(false)
+
+  @@unique([day])
+}
+
+model BusinessAppearance {
+  id           String   @id @default(cuid())
+  primaryColor String   @default("#06b6d4")
+  accentColor  String   @default("#3b82f6")
+  darkMode     Boolean  @default(true)
+  logoUrl      String?
+}
