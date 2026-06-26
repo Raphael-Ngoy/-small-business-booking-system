@@ -1,4 +1,3 @@
-
 # Full Stack Web App (Next.js + Prisma + Auth + Vercel Ready)
 A modern full-stack web application built with **Next.js**, **Prisma ORM**, **Neon PostgreSQL**, and **NextAuth-style authentication**, fully deployed and optimized for production on Vercel.
 This project includes authentication, database integration, admin capabilities, and a scalable architecture suitable for SaaS applications.
@@ -150,13 +149,11 @@ This project includes production fixes for:
 
 ⸻
 
-👤 Author
+Author
 
-Built as a full-stack SaaS foundation with production deployment readiness.
+Raphael Ngoy Full-Stack Developer (Aspiring Freelancer)
 
-⸻
+📜 License
 
-📄 License
-
-MIT
+This project is for portfolio/learning/demo purposes only.
 
