@@ -6,6 +6,8 @@ link : https://small-business-booking-system.vercel.app/
 
 
 ## Preview
+![homepage](https://github.com/user-attachments/assets/635dad70-504b-4e03-86b5-baf4c7df7221)
+
 ## 🚀 Tech Stack
 - **Frontend:** Next.js (App Router)
 - **Backend:** Next.js API Routes
